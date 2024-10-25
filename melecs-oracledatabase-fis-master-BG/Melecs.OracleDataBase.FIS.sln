@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Melecs.OracleDataBase.FIS", "Melecs.OracleDataBase.FIS\Melecs.OracleDataBase.FIS.csproj", "{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{51823BF1-1612-4779-A9D0-1C1DAA0D569A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}.Debug|x86.ActiveCfg = Release|x86
+		{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}.Debug|x86.Build.0 = Release|x86
+		{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}.Release|x86.ActiveCfg = Release|x86
+		{CFFB9044-C1BE-4F9F-ACA3-CED65F487D62}.Release|x86.Build.0 = Release|x86
+		{51823BF1-1612-4779-A9D0-1C1DAA0D569A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{51823BF1-1612-4779-A9D0-1C1DAA0D569A}.Debug|Any CPU.Build.0 = Debug|x86
+		{51823BF1-1612-4779-A9D0-1C1DAA0D569A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{51823BF1-1612-4779-A9D0-1C1DAA0D569A}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{51823BF1-1612-4779-A9D0-1C1DAA0D569A}.Debug|x86.ActiveCfg = Release|x86
+		{51823BF1-1612-4779-A9D0-1C1DAA0D569A}.Debug|x86.Build.0 = Release|x86
+		{51823BF1-1612-4779-A9D0-1C1DAA0D569A}.Release|Any CPU.ActiveCfg = Release|x86
+		{51823BF1-1612-4779-A9D0-1C1DAA0D569A}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{51823BF1-1612-4779-A9D0-1C1DAA0D569A}.Release|Mixed Platforms.Build.0 = Release|x86
+		{51823BF1-1612-4779-A9D0-1C1DAA0D569A}.Release|x86.ActiveCfg = Release|x86
+		{51823BF1-1612-4779-A9D0-1C1DAA0D569A}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FB879AB-9606-4759-9BC2-7148B94FF3DE}
+	EndGlobalSection
+EndGlobal

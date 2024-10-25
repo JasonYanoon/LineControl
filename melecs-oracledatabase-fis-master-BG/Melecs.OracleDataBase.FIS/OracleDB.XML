@@ -1,0 +1,757 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OracleDB</name>
+    </assembly>
+    <members>
+        <member name="T:OracleDB.LASER">
+            <summary>
+            This is the Laser Class.
+            </summary>
+        </member>
+        <member name="F:OracleDB.LASER.m_fis">
+            <summary>
+            Object from the Oracle Class. 
+            </summary>
+        </member>
+        <member name="F:OracleDB.LASER.m_fis2">
+            <summary>
+            Object from the Oracle Class. 
+            </summary>
+        </member>
+        <member name="M:OracleDB.LASER.#ctor">
+            <summary>
+            Initializes a new instance of the LASER class.
+            </summary>
+        </member>
+        <member name="M:OracleDB.LASER.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the LASER class.
+            </summary>
+            <param name="user">Database User</param>
+            <param name="password">Database password of the user</param>
+            <param name="fistestsystem">true for the connection with the test system,
+            false for connection with the production system, default is false.</param>
+        </member>
+        <member name="M:OracleDB.LASER.#ctor(System.String,System.String,OracleDB.Oracle.DataSources)">
+            <summary>
+            Initializes a new instance of the LASER class.
+            </summary>
+            <param name="user">Database User</param>
+            <param name="password">Database password of the user</param>
+            <param name="fistestsystem">true for the connection with the test system,
+            false for connection with the production system, default is false.</param>
+        </member>
+        <member name="P:OracleDB.LASER.IsConnected">
+            <summary>
+            Gets a value indicating whether if the connection is enabled.
+            </summary>
+        </member>
+        <member name="M:OracleDB.LASER.Dispose">
+            <summary>
+            Dispose function to close the Database connection and clear all objects.
+            </summary>
+        </member>
+        <member name="M:OracleDB.LASER.GetAuftragsInformation(System.String,System.String,System.String@,System.String,System.Collections.Generic.List{System.String}@,System.String)">
+            <summary>
+            Function to read the Order Data.
+            </summary>
+            <param name="_auftrag">The Order.</param>
+            <param name="_nummerngeneratorid">The name of the Number Generator.</param>
+            <param name="_result">returns the Order information with the function boards yes or nor.</param>
+            <param name="_maschinenid">FIS workplace.</param>
+            <param name="_nummernstreke">returns the numbers for the Laser.</param>
+            <param name="_auftragszuordnungsoption">default spaeter this field should not be filled out.</param>
+            <returns>Empty String if all is OK or an Exception if an Error occurred.</returns>
+        </member>
+        <member name="M:OracleDB.LASER.AuftragsZuordnung(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Function for the Order assignment.
+            </summary>
+            <param name="_einzelträgerident">Ident of the base or of the single Ident.</param>
+            <param name="_trägerident">Base Ident.</param>
+            <param name="_auftrag">The Order.</param>
+            <param name="_maschinenid">FIS workplace.</param>
+            <param name="_gebindelabelid">Ident of the Gebindelabels.</param>
+            <returns>Empty String if all is OK or an Exception if an Error occurred.</returns>
+        </member>
+        <member name="M:OracleDB.LASER.NummernstreckeZiehen(System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            Function to get the idents from the FIS.
+            </summary>
+            <param name="_maschinenid">Fis workplace.</param>
+            <param name="_nummerngeneratorid">The name of the Number Generator.</param>
+            <param name="_auftragszuordnungsoption">default spaeter this field should not be filled out.</param>
+            <param name="_anzahl">How many Idents should be generated.</param>
+            <param name="_auftrag">The Order.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.LASER.CalculateOrderQuantity(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Calculate how many numbers to generate idents.
+            </summary>
+            <param name="Quantity">Funktionsnutzen Anzahl.</param>
+            <param name="orderQuantity">Auftrasstückzahl</param>
+            /// <param name="isfunktionsNutzen">Funktionsnutzen yes or no.</param>
+            <returns></returns>
+        </member>
+        <member name="T:OracleDB.Oracle">
+            <summary>
+            This is the class for communication with the FIS database.
+            </summary>
+        </member>
+        <member name="T:OracleDB.Oracle.EinBauHistorie">
+            <summary>
+            The class for an assambly history.
+            </summary>
+        </member>
+        <member name="P:OracleDB.Oracle.EinBauHistorie.Typ">
+            <summary>
+            Gets or sets the type of the assembled sub ident.
+            </summary>
+        </member>
+        <member name="P:OracleDB.Oracle.EinBauHistorie.Datum">
+            <summary>
+            Gets or sets the date when the sub ident was assembled.
+            </summary>
+        </member>
+        <member name="P:OracleDB.Oracle.EinBauHistorie.SubIdent">
+            <summary>
+            Gets or sets the sub ident which was assembled.
+            </summary>
+        </member>
+        <member name="P:OracleDB.Oracle.EinBauHistorie.AuftragsSubIdent">
+            <summary>
+            Gets or sets the Ordernumber of the sub ident which was assembled.
+            </summary>
+        </member>
+        <member name="T:OracleDB.Oracle.IterationTypes">
+            <summary>
+            The value types from which you can receive the iteration.
+            </summary>
+        </member>
+        <member name="F:OracleDB.Oracle.IterationTypes.APG">
+            <summary>
+            The workplace group.
+            </summary>
+        </member>
+        <member name="F:OracleDB.Oracle.IterationTypes.LAP">
+            <summary>
+            The logic workplace.
+            </summary>
+        </member>
+        <member name="T:OracleDB.Oracle.DataSources">
+            <summary>
+            Indicates which data source should be used to connect to FIS.
+            </summary>
+        </member>
+        <member name="F:OracleDB.Oracle.DataSources.EWW">
+            <summary>
+            Wuxi DB.
+            </summary>
+        </member>
+        <member name="F:OracleDB.Oracle.DataSources.Central">
+            <summary>
+            The central DB.
+            </summary>
+        </member>
+        <member name="F:OracleDB.Oracle.DataSources.CentralTest">
+            <summary>
+            The central test DB.
+            </summary>
+        </member>
+        <member name="T:OracleDB.Oracle.EMFWorkplaceStates">
+            <summary>
+            The Values of the WorkplaceStates from the EMF.
+            </summary>
+        </member>
+        <member name="F:OracleDB.Oracle.EMFWorkplaceStates.Locked">
+            <summary>
+            The workplace is locked.
+            </summary>
+        </member>
+        <member name="F:OracleDB.Oracle.EMFWorkplaceStates.Free">
+            <summary>
+            The workplace is free.
+            </summary>
+        </member>
+        <member name="F:OracleDB.Oracle.EMFWorkplaceStates.Retest">
+            <summary>
+            The workplace has been unlocked but has to be tested again.
+            </summary>
+        </member>
+        <member name="F:OracleDB.Oracle.emfWorkplaceState">
+            <summary>
+            The EMF workplace state.
+            </summary>
+        </member>
+        <member name="P:OracleDB.Oracle.EMFWorkplaceState">
+            <summary>
+            Gets or sets the state of the EMF workplace.
+            </summary>
+            <value>
+            The state of the EMF workplace.
+            </value>
+        </member>
+        <member name="M:OracleDB.Oracle.#ctor">
+            <summary>
+            Initializes a new instance of the Oracle class.
+            </summary>
+        </member>
+        <member name="M:OracleDB.Oracle.Dispose">
+            <summary>
+            Disposes the class and closes the database connection.
+            </summary>
+        </member>
+        <member name="M:OracleDB.Oracle.OPEN_DATABASE_CONNECTION(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Create a Connection to the specified Oracle Database.
+            </summary>
+            <param name="User">The Database User for Login.</param>
+            <param name="Password">The Database password for Login.</param>
+            <param name="FisTestSystem">connect to the FisTest System in Siegendorf write ["true"] for normal Production System ["false"].</param>
+            <param name="fisGyoer">Connect to FisGyör Production Databse write ["true"] for Sigendorf write ["false"]</param>
+        </member>
+        <member name="M:OracleDB.Oracle.OPEN_DATABASE_CONNECTION(System.String,System.String,OracleDB.Oracle.DataSources)">
+            <summary>
+            Create a Connection to the specified Oracle Database.
+            </summary>
+            <param name="User">
+            The Database User for Login.
+            </param>
+            <param name="Password">
+            The Database password for Login.
+            </param>
+            <param name="dataSource">
+            The data source to the specific Database.
+            </param>
+            <exception cref="T:System.Exception">
+            </exception>
+        </member>
+        <member name="M:OracleDB.Oracle.CLOSE_DATABASE_CONNECTION">
+            <summary>
+            Close the specified Database Connection.
+            </summary>
+        </member>
+        <member name="M:OracleDB.Oracle.GET_META_DATA(System.String,System.String,System.String@)">
+            <summary>
+            Gets the meta data from the mapping table.
+            </summary>
+            <param name="COMMAND">The command ýou want to send (e.g.: 'ALL').</param>
+            <param name="IN_VALUE">The values for the command (e.g.: 'IDENT=BBNA35M\rPROZESS=VERP').</param>
+            <param name="RESULT">The string with all parameters found in the mapping table with the given command and values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GET_META_DATA_ONLY(System.String,System.String,System.String@)">
+            <summary>
+            Gets the meta data from the mapping table without making a 'CheckVorprozess'.
+            </summary>
+            <param name="IDENT">The Ident to get the data from.</param>
+            <param name="PROZESS">The prozess to get the data from.</param>
+            <param name="RESULT">The result string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.CREATEFETECHID(System.String,System.String,System.String@)">
+            <summary>
+            Creat packaging Id
+            Calls FIS function FID_APPL_IF.CREATEVERPACKID
+            </summary>
+            <param name="FNV_ID"></param>
+            <param name="FORMAT_ID"></param>
+            <param name="RESULT"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.CREATEFETECHIDENT(System.String@,System.String,System.String)">
+            <summary>
+            Create Ident without order
+            Store Ident in table "Funktionale Einheit"
+            </summary>
+            <param name="FE_ID">Ident</param>
+            <param name="FNV_ID">Number generator purpose Id</param>
+            <param name="FORMAT_ID">Number generator format Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.CHECKVORPROZESS(System.String,System.String,System.String,System.String@,System.String@,System.String@)">
+            <summary>
+            Funkton überprüft Vorprozess des Einzelnen Arbeitsplatzes
+            </summary>
+            <param name="IN_FE_ID">Barcode</param>
+            <param name="IN_VALUE">Arbeitsplatz : Bespiel "'XXX-XXXX'"</param>
+            <param name="VALUE_TYP">LAPLIST</param>
+            <param name="RESULT">1 für IO und 0 für NIO</param>
+            <param name="VORPROZESSDATUM">Datum des Vorprozesses</param>
+            <param name="VORPROZLAP">Ist gleich IN_VALUE</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.CHECKVORPROZESS_AOI(System.String,System.String,System.String,System.String@,System.String@,System.String@)">
+            <summary>
+            Funkton überprüft Vorprozess des Einzelnen Arbeitsplatzes
+            </summary>
+            <param name="IN_FE_ID">Barcode</param>
+            <param name="IN_VALUE">Arbeitsplatz : Bespiel "'XXX-XXXX'"</param>
+            <param name="VALUE_TYP">LAPLIST</param>
+            <param name="RESULT">1 für IO und 0 für NIO</param>
+            <param name="VORPROZESSDATUM">Datum des Vorprozesses</param>
+            <param name="VORPROZLAP">Ist gleich IN_VALUE</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.CHECKVORPROZESS(System.String,System.String,System.String,System.String@,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            Funkton überprüft Vorprozess des Einzelnen Arbeitsplatzes
+            </summary>
+            <param name="IN_FE_ID">Barcode</param>
+            <param name="IN_VALUE">Arbeitsplatz : Bespiel "'XXX-XXXX'"</param>
+            <param name="VALUE_TYP">LAPLIST</param>
+            <param name="RESULT">1 für IO und 0 für NIO</param>
+            <param name="VORPROZESSDATUM">Datum des Vorprozesses</param>
+            <param name="VORPROZLAP">Ist gleich IN_VALUE</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GETSITE(System.String)">
+            <summary>
+            Funktion für ZKW723 um die Linke und Rechte Seite herauszufinden
+            </summary>
+            <param name="IDENT">Ident der Baugruppe</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.IDENTFROMSYNONYM(System.String)">
+            <summary>
+            Identnummer von Synonym ermitteln
+            </summary>
+            <param name="Synonym">Synonym des Idents</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetWorkplaces(System.String,System.Data.DataTable@)">
+            <summary>
+            Get workplaces from ADAM AVO ALLE
+            </summary>
+            <param name="ident">Ident from the Device</param>
+            <param name="result">DataTable of the query result.</param>
+            <returns>Empty string if it is OK Error Message if it is not OK.</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GETAUFTRAGSSTÜCKZAHL(System.String)">
+            <summary>
+            Gibt die Auftragsstückzahl zurück die noch offen ist.
+            </summary>
+            <param name="Auftrag">Auftragsnummer</param>
+            <returns>Offene Auftragsstückzahl</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetOrderOpenQuantity(System.String)">
+            <summary>
+            Specify the order number and you will get the open quantity for that order
+            </summary>
+            <param name="OrderNumber">order number</param>
+            <returns>Open order quantity</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.IsOrderClosed(System.String,System.Nullable{System.Boolean}@)">
+            <summary>
+            Specify the order number and you will get the result as an out parameter: the order is closed or not
+            </summary>
+            <param name="OrderNumber">order number</param>
+            <param name="IsOrderClosed">Out parameter to get order is closed or not</param>
+            <returns>Exception error message (if empty no errors)</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetUnterstufenInformation(System.String)">
+            <summary>
+            Gibt die UnterstufenMaterialnummer und den Unterstufen Auftrag zurück.
+            </summary>
+            <param name="ident">Barcode</param>
+            <returns>UnterstufenMaterialnummer, UnterstufenAuftrag</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetEinbauHistorie(System.String)">
+            <summary>
+            Gibt die Idents Einbau Idents Liste zurück.
+            </summary>
+            <param name="ident">Barcode</param>
+            <returns>UnterstufenMaterialnummer</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetEinbauHistorieUnterIdent(System.String)">
+            <summary>
+            Gibt die Einbau/Ausbeu Liste eines Unter-Idents zurück.
+            </summary>
+            <param name="ident">Barcode</param>
+            <returns>UnterstufenMaterialnummer</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetFremdEinbauHistorie(System.String)">
+            <summary>
+            Returns a list of all mountings for a Foreign Ident (Product).
+            </summary>
+            <param name="ident">Foreign Ident</param>
+            <returns>EinauHistorie</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GETIDENTFROMPACKID(System.String,System.Collections.Generic.List{OracleDB.Intellic}@)">
+            <summary>
+            Gibt die Auftragsstückzahl zurück die noch offen ist.
+            </summary>
+            <param name="verpackungsnummer">Auftragsnummer</param>
+            <param name="result">Ergebniss der Abfrage Rückgabe ist Ident und Synonym </param>
+            <returns>Error Handling</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GETAUFIDENTANZAHL(System.String,System.Int32,System.Int64@,System.Int64@,System.Int64@,System.Int64@,System.Int64@,System.Int64@)">
+            <summary>
+            Ermittlung der Ident Anzahl zum Auftrag!
+            </summary>
+            <param name="AUF_ID">Auftrag eingeben</param>
+            <param name="AUF_POS">Default immer auf 1</param>
+            <param name="NUTZEN_ANZ">Nutzenanzahl zum Auftrag</param>
+            <param name="SOLL_ANZ_IDENTS">Soll Identanzahl zum Auftrag</param>
+            <param name="SOLL_ANZ_TRAEGER">Soll Trägeranzahl zum Auftrag</param>
+            <param name="IST_ANZ_IDENTS">Ist Identanzahl zum Auftrag</param>
+            <param name="IST_ANZ_TRAEGER">Ist Identanzahl zum Auftrag</param>
+            <param name="REST_ANZ_IDENTS">Restliche Identanzahl zum Auftrag</param>
+            <returns>Null String wenn OK ansonsten wird die Fehlermeldung ausgegeben</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.SYNONYM_INP(System.String,System.String,System.String@)">
+            <summary>
+            Synonym bilden
+            </summary>
+            <param name="IDENT">Ident für die Synonymbildung</param>
+            <param name="SYNONYM">Das zu bildende Synonym</param>
+            <param name="RESULT">Gebildetes Synonym aus der Funktion</param>
+            <returns>Null String wenn OK ansonsten wird die Fehlermeldung ausgegeben</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.SYNONYM_OUT(System.String,System.String@)">
+            <summary>
+            Synonym trennen
+            </summary>
+            <param name="IDENT">Ident für das trennen des Synonyms</param>
+            <param name="RESULT">Das Result der Synonym Trennung</param>
+            <returns>Null String wenn OK ansonsten wird die Fehlermeldung ausgegeben</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GET_OBERSTUFEN(System.String,System.String,System.Collections.Generic.List{System.String[]}@)">
+             <summary>
+            
+             </summary>
+             <param name="ident"></param>
+             <param name="auftrag"></param>
+             <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GET_PRODUKT_PARAMETER(System.String,System.String,System.String@)">
+            <summary>
+            Gets the value of the given parameter from the given Material-number.
+            </summary>
+            <param name="MATNR">The Material-number.</param>
+            <param name="PARNAME">The parameter name.</param>
+            <param name="RESULT">The value of the parameter.</param>
+            <returns>An empty string if the execution was successful, otherwise the error message.</returns>
+            <exception cref="T:System.Exception">
+            If an exception get caught, the error message will be returned in the result string.
+            </exception>
+        </member>
+        <member name="M:OracleDB.Oracle.GetIdentsFromPackagingNumber(System.String,System.Collections.Generic.List{System.String}@)">
+            <summary>
+            Gets all idents which are packaged into the given tracenumber.
+            </summary>
+            <param name="packID">The tracenumber.</param>
+            <param name="result">The list with all idents packaged into the tracenumber.</param>
+            <returns>An empty string if the execution was successfull, otherwise the errormessage.</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.Store_Load_Store_Rst_Load(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean)">
+             <summary>
+            
+             </summary>
+             <param name="p_EventNr"></param>
+             <param name="p_PruefCode"></param>
+             <param name="p_Linie"></param>
+             <param name="p_Station"></param>
+             <param name="p_Stellplatz"></param>
+             <param name="p_Spur"></param>
+             <param name="p_Fach"></param>
+             <param name="p_ErfassungsDatum"></param>
+             <param name="p_BestellAuftrag"></param>
+             <param name="p_BestellPosition"></param>
+             <param name="p_MaterialnummerIst"></param>
+             <param name="p_DateCode"></param>
+             <param name="p_BestellBezeichnung"></param>
+             <param name="p_MaterialNummerSoll"></param>
+             <param name="p_Ruestung"></param>
+             <param name="p_Sap_AufID"></param>
+             <param name="p_FehlerText"></param>
+             <param name="p_FileName"></param>
+             <param name="p_RuestInfo"></param>
+             <param name="p_GebindeLabelIdent"></param>
+             <param name="p_Ml"></param>
+             <param name="p_BestellMenge"></param>
+             <param name="p_Delete"></param>
+             <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.Verteil_Rst(System.String)">
+            <summary>
+            This Function distributed the information of the STORE_RST_LOAD Procedure to the RUEST Table.
+            </summary>
+            <param name="p_FileName">IP Adress of the maschine who call this function</param>
+            <returns>Null String if it is OK , Error Message if it is not OK.</returns>
+            <exception cref="T:Oracle.DataAccess.Client.OracleException">Thrown when an Error occoured.</exception>
+        </member>
+        <member name="M:OracleDB.Oracle.GetIteration(System.String,System.String,OracleDB.Oracle.IterationTypes,System.Int32@)">
+            <summary>
+            Gets the iteration of the given value.
+            The iteration indicates who often a ident passes the given worplace (or workplace group).
+            </summary>
+            <param name="ident">The ident of which you want to know the iteration.</param>
+            <param name="value">The value which indicates the workplace or workplace group.</param>
+            <param name="iterationType">The type of the value (e.g.: worplace group).</param>
+            <param name="iteration">The iteration of the given ident and value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetOberUnterStufenInformation(System.Data.DataSet@,System.String,System.String)">
+            <summary>
+            Gibt ein DataSet zurück mit den zugehörigen offenen Ober und unterstufen Aufträgen.
+            Achuchtung es darf entwerder nur der Ident oder die GeräteMaterialnumemr übergebenwerden.
+            </summary>
+            <param name="Ident">Ident der Baugruppe</param>
+            <param name="GeräteMaterialnummer">GeräteMaterialnummer</param>
+            <param name="ds">Referenz eines Datasets.</param>
+            <returns>Empty String wenn OK.Fehlermeldung wenn nciht OK.</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetIntervall(System.String)">
+            <summary>
+            Gets the intervall Time and Count for the EMF Form to pup up.
+            </summary>
+            <param name="ident">The ident.</param>
+            <returns>Returns the result separated by "\r"</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetWorkplaceLock(System.String)">
+            <summary>
+            Gets the workplace lock information for the EMF.
+            </summary>
+            <param name="workplace">The workplace LAP.</param>
+            <returns>returns the error message</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.UpdateCheckTime(System.String)">
+            <summary>
+            Update the Field PRUEFUNG_DATETIME in the Table EMF_ARBEITSPLATZ_SPERRE for the EMF.
+            </summary>
+            <param name="workplace">The workplace LAP.</param>
+            <returns>returns the error message</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetQualityInformation(System.String,System.DateTime,System.DateTime,System.Data.DataTable@)">
+            <summary>
+            The get quality information.
+            </summary>
+            <param name="lap">
+            The lap.
+            </param>
+            <param name="startTime">
+            The start time.
+            </param>
+            <param name="endTime">
+            The end time.
+            </param>
+            <param name="dt">
+            The dt.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:OracleDB.Oracle.CheckPreProcess(System.String,System.String,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            The check pre process.
+            </summary>
+            <param name="ident">
+            The ident.
+            </param>
+            <param name="lap">
+            The lap.
+            </param>
+            <param name="result">
+            The result.
+            </param>
+            <param name="preProcessDate">
+            The pre process date.
+            </param>
+            <param name="preProcessLap">
+            The pre process lap.
+            </param>
+            <param name="additionalText">
+            The additional text.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+            <exception cref="T:System.Exception">
+            </exception>
+        </member>
+        <member name="M:OracleDB.Oracle.GetIdentsFromOrder(System.Data.DataSet@,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="ds"></param>
+            <param name="Ordernumber"></param>
+            <param name="OnlyPackaged">'T' for only Packed, String.Empty for all, 'F' for only NOT packaged</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetOpenordersForMaterial(System.Data.DataSet@,System.String,System.Nullable{System.DateTime})">
+            <summary>
+            
+            </summary>
+            <param name="ds"></param>
+            <param name="MatNr"></param>
+            <param name="MaxPlanDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetPassedIdentsForLap(System.Data.DataSet@,System.String,System.String,System.Nullable{System.DateTime})">
+            <summary>
+            
+            </summary>
+            <param name="ds"></param>
+            <param name="Lap"></param>
+            <param name="ApgVp"></param>
+            <param name="Date">null = last 24h</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.CustomerExportStore(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Exports a Key-Value pair to the customer interface
+            Data will be uploaded to customer as AVO-9999 is passed for specified ident
+            </summary>
+            <param name="ident">Ident</param>
+            <param name="lap">Logival Workplace</param>
+            <param name="customer">Customer. must be added in FIS Mask "Kundeninformationmen verwaltren"</param>
+            <param name="key">Key</param>
+            <param name="value">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetPanelDefinitionForMaterial(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="materialNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GetLastTraceTimeStamp(System.String,System.String,System.DateTime@)">
+            <summary>
+            Returns the timestamp of the last trace entry which was submitted to MES
+            </summary>
+            <param name="OrderNumber">The order number to check</param>
+            <param name="Line">The line name to check</param>
+            <param name="Timestamp">Timestamp of the last entry</param>
+            <returns></returns>
+        </member>
+        <member name="M:OracleDB.Oracle.Benchmark(System.Action)">
+            <summary>
+            Gets the execution time of the given action in milliseconds.
+            </summary>
+            <param name="action">The action which should be measured.</param>
+            <returns>The execution time in milliseconds.</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.BenchmarkWithTraceOrExecute(System.String,System.Action)">
+            <summary>
+            Traces the message with the benchmark of the given action to the debug output if DEBUG is on.
+            </summary>
+            <param name="msg">The message to write.</param>
+            <param name="action">The action which should be executed if DEBUG is off.</param>
+        </member>
+        <member name="M:OracleDB.Oracle.StringRemover(System.String)">
+            <summary>
+            Gets a value indicating whether the given string contains 'Rechts' or 'Links'.
+            </summary>
+            <param name="s">The string to test.</param>
+            <returns>true, if the string contains 'Rechts' or 'Links', otherwise false.</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.GETVERSION">
+            <summary>
+            Gets the current version of the assembly.
+            </summary>
+            <returns>The current verseion.</returns>
+        </member>
+        <member name="M:OracleDB.Oracle.IsConnected">
+            <summary>
+            Gets a value indicating whether the connection to the database is open.
+            </summary>
+            <returns>true, if the database connection is open, otherwise false if it is closed.</returns>
+        </member>
+        <member name="P:OracleDB.Oracle.Version">
+            <summary>
+            Gets the current version of the assembly.
+            </summary>
+        </member>
+        <member name="P:OracleDB.Oracle.Connected">
+            <summary>
+            Gets a value indicating whether the connection to the database is open.
+            </summary>
+        </member>
+        <member name="T:OracleDB.LaserExceptions">
+            <summary>
+            Represents a generic Laser exception.
+            </summary>
+        </member>
+        <member name="M:OracleDB.LaserExceptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:OracleDB.LaserExceptions"/> class.
+            </summary>
+        </member>
+        <member name="M:OracleDB.LaserExceptions.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OracleDB.LaserExceptions"/> class.
+            </summary>
+        </member>
+        <member name="M:OracleDB.LaserExceptions.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OracleDB.LaserExceptions"/> class.
+            </summary>
+            <param name="message">The message to be passed on with the exception.</param>
+            /// <param name="index">The index number of the error message.</param>
+        </member>
+        <member name="M:OracleDB.LaserExceptions.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OracleDB.LaserExceptions"/> class.
+            </summary>
+            <param name="message">The message to be passed on with the exception.</param>
+            <param name="innerException">The inner exception to be passed on with the exception.</param>
+        </member>
+        <member name="M:OracleDB.LaserExceptions.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OracleDB.LaserExceptions"/> class.
+            </summary>
+            <param name="info">The serialization info to be passed on with the exception.</param>
+            <param name="context">The streaming context to be used for serializing the exception.</param>
+        </member>
+        <member name="T:OracleDB.PanelDefinition">
+            <summary>
+            Panel Definition class for a material number
+            </summary>
+        </member>
+        <member name="P:OracleDB.PanelDefinition.MaterialNumber">
+            <summary>
+            First level material number
+            </summary>
+        </member>
+        <member name="P:OracleDB.PanelDefinition.MaterialNumber_ZFER">
+            <summary>
+            Second level material number
+            </summary>
+        </member>
+        <member name="P:OracleDB.PanelDefinition.PanelName">
+            <summary>
+            Panel name like '2_FACH' or '4_FACH'. ConnectedTo parameter is using same PanelNames
+            </summary>
+        </member>
+        <member name="P:OracleDB.PanelDefinition.BoardPosition">
+            <summary>
+            Main PCB has single boards this is refering to the correct position.
+            </summary>
+        </member>
+        <member name="P:OracleDB.PanelDefinition.X_Position">
+            <summary>
+            X offset of the single board
+            </summary>
+        </member>
+        <member name="P:OracleDB.PanelDefinition.Y_Position">
+            <summary>
+            Y offset of the single board
+            </summary>
+        </member>
+        <member name="P:OracleDB.PanelDefinition.Rotation">
+            <summary>
+            Rotate angle (ie.: 180 degree)
+            </summary>
+        </member>
+        <member name="P:OracleDB.PanelDefinition.ConnectedTo">
+            <summary>
+            Parent panel definition record reference. For two level hierarchy this value is a reference for the parent.
+            </summary>
+        </member>
+    </members>
+</doc>
